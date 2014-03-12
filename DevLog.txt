@@ -1,0 +1,32 @@
+Program Outline
+***************************************
+What is the name of today's meal plan?
+***************************************
+1. Add food to today's meal plan
+2. Edit food from today's meal
+2. Delete food from today's meal
+3. Add food data
+4. Edit food data
+5. Delete food data
+6. Exit
+***************************************
+1. Add food to today's meal plan
+	Which meal is this for?
+	1. Mass
+	2. Maintain
+	3. Lean
+		What meal of the day is it?
+		1. Meal 1
+		2. Meal 2
+		3. Meal 3
+			What category you like to add?
+			1. Lighter Side
+			2. ...
+			...
+			...
+			...
+				What food would you like to add?
+				1. ...
+				...
+				...
+				...
