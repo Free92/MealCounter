@@ -23,8 +23,9 @@ public:
 
 int populate(vector<mealList> & list, ifstream & fin);
 void parser(Meal meal, string toParse);
-void menu();
-void addFood();
+void menu(vector<mealList> & list);
+void catNames(vector<mealList> & list);
+void addFood(vector<mealList> & list);
 void editFood();
 void deleteFood();
 void addData();
@@ -44,7 +45,7 @@ int main(void){
 
 	if(populate(list, fin) == 1)
 		return 1;
-	menu();
+	menu(list);
 
 	return 0;
 }
@@ -79,17 +80,17 @@ int populate(vector<mealList> & list, ifstream & fin){
 		Meal testMeal(name,fat,carb,protein);
 		itr->meals.push_back(testMeal);
 	}
-	for(itr = list.begin(); itr != list.end(); ++itr){
+	/*for(itr = list.begin(); itr != list.end(); ++itr){
 		cout << itr->name << endl;
 		for(auto itr2 = itr->meals.begin(); itr2 != itr->meals.end(); ++itr2){
 			itr2->print();
 		}
-	}
+	}*/
 	return 0;
 }
 
 
-void menu(){
+void menu(vector<mealList> & list){
 	string temp;
 	int input;
 	cout << "What is the name of today's meal plan?" << endl;
@@ -101,7 +102,7 @@ void menu(){
 		cin >> input;
 		switch(input){
 		case 1:
-			addFood();
+			addFood(list);
 			break;
 		case 2:
 			editFood();
@@ -126,8 +127,50 @@ void menu(){
 	} while(input != 7);
 }
 
-void addFood(){
-	cout << "Do something here!" << endl;
+void catNames(vector<mealList> & list){
+	for(auto itr = list.begin(); itr != list.end(); ++itr){
+		cout << itr->name << endl;
+	}
+}
+
+void addFood(vector<mealList> & list){
+	int menuChoice = 0;
+	string mealPlanChoices = "Which meal plan is this for?\n1. Mass\n2. Maintain\n3. Lean\n4. Cancel";
+	string mealChoices = "What meal of the day is it?\n1. Meal 1\n2. Meal 2\n3. Meal 3\n4. Cancel";
+
+	cout << mealPlanChoices << endl;
+	cin >> menuChoice;
+	switch(menuChoice){
+	case 1:
+		cout << mealChoices << endl;
+		cin >> menuChoice;
+		switch(menuChoice){
+		case 1: 
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			menu(list);
+			break;
+		default:
+			cout << "Invalid input!" << endl;
+			break;
+		break;
+	case 2:
+		cout << mealChoices << endl;
+		break;
+	case 3:
+		cout << mealChoices << endl;
+		break;
+	case 4:
+		menu(list);
+		break;
+	default:
+		cout << "Invalid input!" << endl;
+		addFood(list);
+	}
 }
 
 void editFood(){
